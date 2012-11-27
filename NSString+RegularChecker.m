@@ -41,9 +41,13 @@
         return NO;
     }
     
-#warning implementation incomplete
-    
-    return NO;
+    //check wether string is same as before the transformation
+    if ([[self stringCleanerWithWhiteList:expressions] isEqualToString:self]) {
+        return YES;
+    }else{
+	    //string is not valid. it contains other characters
+        return NO;
+    }
 }
 
 - (NSString*)stringCleanerWithWhiteList:(NSArray*)expressions{
