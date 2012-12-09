@@ -100,7 +100,7 @@
 + (NSArray*) getAllDigitsAndLetters{
     NSMutableArray *list = [NSMutableArray new];
     
-    NSString *inputCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 äöüÄÖÜß*";
+    NSString *inputCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 äöüÄÖÜß*-_";
     
     for (int i=0; i<inputCharacters.length; i++) {
         NSString * character = [inputCharacters substringWithRange:NSMakeRange(i, 1)];
