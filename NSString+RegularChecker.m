@@ -26,9 +26,6 @@
 
 @implementation NSString (RegularChecker)
 
-
-
-
 - (BOOL)isValidExpressionFormat:(NSArray*)expressions{
     
     if (!expressions) {
@@ -41,9 +38,13 @@
         return NO;
     }
     
-#warning implementation incomplete
-    
-    return NO;
+    //check wether string is same as before the transformation
+    if ([[self stringCleanerWithWhiteList:expressions] isEqualToString:self]) {
+        return YES;
+    }else{
+	    //string is not valid. it contains other characters
+        return NO;
+    }
 }
 
 - (NSString*)stringCleanerWithWhiteList:(NSArray*)expressions{
@@ -96,8 +97,10 @@
 + (NSArray*) getAllDigitsAndLetters{
     NSMutableArray *list = [NSMutableArray new];
     
-    NSString *inputCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 äöüÄÖÜß*";
+	//string with all valid characters
+    NSString *inputCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 äöüÄÖÜß*-_\"";
     
+	//check every character for the validation
     for (int i=0; i<inputCharacters.length; i++) {
         NSString * character = [inputCharacters substringWithRange:NSMakeRange(i, 1)];
         [list addObject:character];
